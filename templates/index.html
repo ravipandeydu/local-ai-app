@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local AI Writer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Local AI Writer</h1>
+            <p>Generate creative content using a local LLM</p>
+        </header>
+
+        <main>
+            <div class="input-section">
+                <form id="prompt-form">
+                    <div class="form-group">
+                        <label for="prompt">What would you like me to write about?</label>
+                        <textarea id="prompt" name="prompt" rows="4" placeholder="Enter a topic or specific instructions (e.g., 'Write a blog intro about sustainable living', 'Create a funny tweet about coffee addiction')" required></textarea>
+                    </div>
+
+                    <div class="form-group temperature-control">
+                        <label for="temperature">Creativity Level: <span id="temp-value">0.7</span></label>
+                        <input type="range" id="temperature" name="temperature" min="0.1" max="1.0" step="0.1" value="0.7">
+                        <div class="temp-labels">
+                            <span>Focused</span>
+                            <span>Balanced</span>
+                            <span>Creative</span>
+                        </div>
+                    </div>
+
+                    <button type="submit" id="generate-btn">Generate Content</button>
+                </form>
+            </div>
+
+            <div class="output-section">
+                <div class="output-container">
+                    <h2>Generated Content</h2>
+                    <div id="loading" class="hidden">
+                        <div class="spinner"></div>
+                        <p>Generating content with local AI...</p>
+                    </div>
+                    <div id="output" class="output-text"></div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Powered by Local LLM Inference | Outputs are logged locally</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
